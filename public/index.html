@@ -5,18 +5,199 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ReCircle App</title>
+
+    <!-- Google Fonts -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     />
+
+    <!-- React & Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/6.22.2/umd/react-router-dom.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mui-material/5.15.20/umd/material.development.js"></script>
+
+    <style>
+      /* Global Reset & Typography */
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #ffffff;
+        color: #333333;
+        line-height: 1.6;
+      }
+
+      /* Smooth scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Navbar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav a {
+        text-decoration: none;
+        margin: 0 1rem;
+        font-weight: 500;
+        color: #333;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #0077ff;
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, #0077ff, #00c6ff);
+        color: #fff;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero p {
+        max-width: 600px;
+        font-size: 1.2rem;
+        opacity: 0.9;
+        animation: fadeInUp 1.5s ease;
+      }
+
+      .hero button {
+        margin-top: 2rem;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 50px;
+        background: linear-gradient(45deg, #0077ff, #00c6ff);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4);
+      }
+
+      .hero button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 119, 255, 0.6);
+      }
+
+      /* Card Section */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 4rem 2rem;
+      }
+
+      .card {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background: #f5f5f5;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!-- Sample Static Content -->
+    <nav>
+      <div class="logo">ReCircle</div>
+      <div>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="home">
+      <h1>Welcome to ReCircle App</h1>
+      <p>
+        A modern platform to recycle, reuse, and reimagine — making the world
+        greener and cleaner.
+      </p>
+      <button>Get Started</button>
+    </section>
+
+    <section class="cards" id="services">
+      <div class="card">
+        <h3>Recycle</h3>
+        <p>Turn your waste into value with our eco-friendly recycling system.</p>
+      </div>
+      <div class="card">
+        <h3>Reuse</h3>
+        <p>Find innovative ways to reuse materials and reduce waste.</p>
+      </div>
+      <div class="card">
+        <h3>Rewards</h3>
+        <p>Earn points and benefits for every recycling action you take.</p>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 ReCircle App | Designed with ❤️ for a sustainable future
+    </footer>
   </body>
 </html>
