@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Box, Typography, Paper } from '@mui/material';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  Paper,
+  Container,
+  Alert,
+  Link
+} from '@mui/material';
+import RecyclingIcon from '@mui/icons-material/Recycling';
 
 const RegisterScreen = () => {
   const [name, setName] = useState('');
@@ -29,22 +39,113 @@ const RegisterScreen = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 5 }}>
-      <Paper elevation={0} sx={{ p: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom align="center">
-          Sign Up
-        </Typography>
-        {error && <Typography color="error" align="center">{error}</Typography>}
-        <Box component="form" onSubmit={submitHandler} noValidate sx={{ mt: 1 }}>
-          <TextField margin="normal" required fullWidth id="name" label="Name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
-          <TextField margin="normal" required fullWidth id="email" label="Email Address" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <TextField margin="normal" required fullWidth name="password" label="Password" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <Button type="submit" fullWidth variant="outlined" color="primary" sx={{ mt: 3, mb: 2 }} disabled={loading}>
-            {loading ? 'Registering...' : 'Sign Up'}
+    <Container component="main" maxWidth="sm" sx={{ py: 8 }}>
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderRadius: 3,
+          background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
+        }}
+      >
+        <Box sx={{ textAlign: 'center', mb: 3 }}>
+          <RecyclingIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 1 }} />
+          <Typography variant="h4" component="h1" sx={{ fontWeight: 600, color: 'text.primary' }}>
+            Join ReCircle
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>
+            Start your journey towards a more sustainable future
+          </Typography>
+        </Box>
+
+        {error && (
+          <Alert severity="error" sx={{ width: '100%', mb: 2, borderRadius: 2 }}>
+            {error}
+          </Alert>
+        )}
+
+        <Box component="form" onSubmit={submitHandler} noValidate sx={{ mt: 1, width: '100%' }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="Full Name"
+            name="name"
+            autoComplete="name"
+            autoFocus
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            sx={{ mb: 3 }}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            size="large"
+            disabled={loading}
+            sx={{
+              py: 1.5,
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              borderRadius: 2,
+              mb: 2,
+            }}
+          >
+            {loading ? 'Creating Account...' : 'Create Account'}
           </Button>
+
+          <Box sx={{ textAlign: 'center', mt: 2 }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Already have an account?{' '}
+              <Link
+                component={RouterLink}
+                to="/login"
+                sx={{
+                  color: 'primary.main',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                }}
+              >
+                Sign In
+              </Link>
+            </Typography>
+          </Box>
         </Box>
       </Paper>
-    </Box>
+    </Container>
   );
 };
 
