@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, Paper } from '@mui/material';
 
+const MAX_IMAGES = 4;
+
 const CreateItemScreen = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -12,27 +14,43 @@ const CreateItemScreen = () => {
   const [category, setCategory] = useState('Electronics');
   const [condition, setCondition] = useState('Used - Good');
   const [itemType, setItemType] = useState('Item');
-  const [imageFile, setImageFile] = useState(null);
+  const [imageFiles, setImageFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    if (files.length > MAX_IMAGES) {
+      setError(`You can upload up to ${MAX_IMAGES} images only.`);
+      setImageFiles(files.slice(0, MAX_IMAGES));
+    } else {
+      setError('');
+      setImageFiles(files);
+    }
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (!imageFile) {
-      setError('Please select an image to upload.');
+    if (!imageFiles.length) {
+      setError('Please select at least one image to upload.');
       return;
     }
     setLoading(true);
     setError('');
-    const formData = new FormData();
-    formData.append('file', imageFile);
-    formData.append('upload_preset', 'recircle_preset');
     try {
-      const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`;
-      const cloudinaryRes = await axios.post(cloudinaryUrl, formData);
-      const imageUrl = cloudinaryRes.data.secure_url;
+      // Upload all images to Cloudinary
+      const uploadPromises = imageFiles.map(async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'recircle_preset');
+        const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`;
+        const res = await axios.post(cloudinaryUrl, formData);
+        return res.data.secure_url;
+      });
+      const imageUrls = await Promise.all(uploadPromises);
+
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const itemData = { title, description, category, condition, itemType, image: imageUrl };
+      const itemData = { title, description, category, condition, itemType, images: imageUrls };
       await axios.post(`${process.env.REACT_APP_API_URL}/api/items`, itemData, config);
       setLoading(false);
       navigate('/');
@@ -51,10 +69,22 @@ const CreateItemScreen = () => {
           <TextField margin="normal" required fullWidth label="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
           <TextField margin="normal" required fullWidth multiline rows={4} label="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
           <Button variant="outlined" color="primary" component="label" fullWidth sx={{ mt: 2 }}>
-            Upload Image
-            <input type="file" hidden accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} />
+            Upload Images (max {MAX_IMAGES})
+            <input
+              type="file"
+              hidden
+              accept="image/*"
+              multiple
+              onChange={handleImageChange}
+            />
           </Button>
-          {imageFile && <Typography sx={{ mt:1 }}>{imageFile.name}</Typography>}
+          {imageFiles.length > 0 && (
+            <Box sx={{ mt: 1 }}>
+              {imageFiles.map((file, idx) => (
+                <Typography key={idx}>{file.name}</Typography>
+              ))}
+            </Box>
+          )}
           <FormControl fullWidth margin="normal"><InputLabel>Category</InputLabel><Select value={category} label="Category" onChange={(e) => setCategory(e.target.value)}><MenuItem value="Electronics">Electronics</MenuItem><MenuItem value="Furniture">Furniture</MenuItem><MenuItem value="Clothing">Clothing</MenuItem><MenuItem value="Books">Books</MenuItem><MenuItem value="Scrap Metal">Scrap Metal</MenuItem><MenuItem value="Other">Other</MenuItem></Select></FormControl>
           <FormControl fullWidth margin="normal"><InputLabel>Condition</InputLabel><Select value={condition} label="Condition" onChange={(e) => setCondition(e.target.value)}><MenuItem value="New">New</MenuItem><MenuItem value="Used - Like New">Used - Like New</MenuItem><MenuItem value="Used - Good">Used - Good</MenuItem><MenuItem value="Used - Fair">Used - Fair</MenuItem></Select></FormControl>
           <FormControl fullWidth margin="normal"><InputLabel>Type</InputLabel><Select value={itemType} label="Type" onChange={(e) => setItemType(e.target.value)}><MenuItem value="Item">Item</MenuItem><MenuItem value="Scrap">Scrap</MenuItem></Select></FormControl>
