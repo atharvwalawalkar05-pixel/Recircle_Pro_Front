@@ -3,6 +3,7 @@ import axios from 'axios';
 import ItemCard from '../components/ItemCard';
 import { Box, Typography, CircularProgress, Grid, TextField, Button, FormControl, InputLabel, Select, MenuItem, Pagination, Container, Paper, Card, CardContent, Avatar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 
