@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, Paper } from '@mui/material';
+import { TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, Paper, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const MAX_IMAGES = 4;
 
@@ -15,18 +16,32 @@ const CreateItemScreen = () => {
   const [condition, setCondition] = useState('Used - Good');
   const [itemType, setItemType] = useState('Item');
   const [imageFiles, setImageFiles] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Handle image selection and preview
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
+    let selectedFiles = files;
     if (files.length > MAX_IMAGES) {
       setError(`You can upload up to ${MAX_IMAGES} images only.`);
-      setImageFiles(files.slice(0, MAX_IMAGES));
+      selectedFiles = files.slice(0, MAX_IMAGES);
     } else {
       setError('');
-      setImageFiles(files);
     }
+    setImageFiles(selectedFiles);
+    setImagePreviews(selectedFiles.map(file => URL.createObjectURL(file)));
+  };
+
+  // Remove an image before upload
+  const handleRemoveImage = (idx) => {
+    const newFiles = [...imageFiles];
+    const newPreviews = [...imagePreviews];
+    newFiles.splice(idx, 1);
+    newPreviews.splice(idx, 1);
+    setImageFiles(newFiles);
+    setImagePreviews(newPreviews);
   };
 
   const submitHandler = async (e) => {
@@ -78,10 +93,33 @@ const CreateItemScreen = () => {
               onChange={handleImageChange}
             />
           </Button>
-          {imageFiles.length > 0 && (
-            <Box sx={{ mt: 1 }}>
-              {imageFiles.map((file, idx) => (
-                <Typography key={idx}>{file.name}</Typography>
+          {imagePreviews.length > 0 && (
+            <Box sx={{ mt: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+              {imagePreviews.map((src, idx) => (
+                <Box key={idx} sx={{ position: 'relative', width: 80, height: 80 }}>
+                  <img
+                    src={src}
+                    alt={`preview-${idx}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 8, border: '1px solid #ccc' }}
+                  />
+                  <IconButton
+                    size="small"
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      right: 0,
+                      minWidth: 0,
+                      p: '2px',
+                      color: 'error.main',
+                      backgroundColor: 'white',
+                      borderRadius: '50%',
+                      zIndex: 1,
+                    }}
+                    onClick={() => handleRemoveImage(idx)}
+                  >
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </Box>
               ))}
             </Box>
           )}
