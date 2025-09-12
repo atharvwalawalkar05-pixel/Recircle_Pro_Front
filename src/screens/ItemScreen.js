@@ -44,7 +44,7 @@ const ItemScreen = () => {
   if (!item) return <Typography align="center">Item not found.</Typography>;
 
   return (
-    <Paper elevation={3} sx={{ p: 3, mt: 4 }}>
+    <Paper elevation={0} sx={{ p: 3, mt: 4 }}>
       <Box
         component="img"
         src={item.image}
@@ -54,8 +54,8 @@ const ItemScreen = () => {
       <Typography variant="h4" component="h1" sx={{ my: 2 }}>{item.title}</Typography>
       {user && user._id === item.user && (
         <Box sx={{ my: 2, display: 'flex', gap: '10px' }}>
-          <Button variant="contained" component={Link} to={`/item/${item._id}/edit`}>Edit Item</Button>
-          <Button variant="contained" color="error" onClick={deleteHandler}>Delete Item</Button>
+          <Button variant="outlined" color="primary" component={Link} to={`/item/${item._id}/edit`}>Edit Item</Button>
+          <Button variant="outlined" color="error" onClick={deleteHandler}>Delete Item</Button>
         </Box>
       )}
       <Typography variant="h6"><strong>Category:</strong> {item.category}</Typography>

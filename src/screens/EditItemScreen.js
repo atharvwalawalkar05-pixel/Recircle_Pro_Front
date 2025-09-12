@@ -55,7 +55,7 @@ const EditItemScreen = () => {
 
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', mt: 5 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
+      <Paper elevation={0} sx={{ p: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom align="center">Edit Listing</Typography>
         {error && <Typography color="error" align="center">{error}</Typography>}
         <Box component="form" onSubmit={submitHandler} sx={{ mt: 1 }}>
@@ -64,7 +64,7 @@ const EditItemScreen = () => {
           <FormControl fullWidth margin="normal"><InputLabel>Category</InputLabel><Select value={category} label="Category" onChange={(e) => setCategory(e.target.value)}><MenuItem value="Electronics">Electronics</MenuItem><MenuItem value="Furniture">Furniture</MenuItem><MenuItem value="Clothing">Clothing</MenuItem><MenuItem value="Books">Books</MenuItem><MenuItem value="Scrap Metal">Scrap Metal</MenuItem><MenuItem value="Other">Other</MenuItem></Select></FormControl>
           <FormControl fullWidth margin="normal"><InputLabel>Condition</InputLabel><Select value={condition} label="Condition" onChange={(e) => setCondition(e.target.value)}><MenuItem value="New">New</MenuItem><MenuItem value="Used - Like New">Used - Like New</MenuItem><MenuItem value="Used - Good">Used - Good</MenuItem><MenuItem value="Used - Fair">Used - Fair</MenuItem></Select></FormControl>
           <FormControl fullWidth margin="normal"><InputLabel>Type</InputLabel><Select value={itemType} label="Type" onChange={(e) => setItemType(e.target.value)}><MenuItem value="Item">Item</MenuItem><MenuItem value="Scrap">Scrap</MenuItem></Select></FormControl>
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled={loading}>{loading ? 'Updating...' : 'Update Listing'}</Button>
+          <Button type="submit" fullWidth variant="outlined" color="primary" sx={{ mt: 3, mb: 2 }} disabled={loading}>{loading ? 'Updating...' : 'Update Listing'}</Button>
         </Box>
       </Paper>
     </Box>

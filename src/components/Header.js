@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" color="default" elevation={1}>
+    <AppBar position="static" color="default" elevation={0}>
       <Toolbar>
         <Typography 
           variant="h6" 
@@ -27,22 +27,22 @@ const Header = () => {
         <Box>
           {user ? (
             <>
-              <Button color="inherit" component={RouterLink} to="/create">
+              <Button variant="outlined" color="primary" component={RouterLink} to="/create" sx={{ mr: 1 }}>
                 Create Listing
               </Button>
-              <Button color="inherit" component={RouterLink} to="/profile">
+              <Button variant="outlined" color="primary" component={RouterLink} to="/profile" sx={{ mr: 1 }}>
                 My Listings
               </Button>
-              <Button color="inherit" onClick={logoutHandler}>
+              <Button variant="outlined" color="primary" onClick={logoutHandler}>
                 Logout
               </Button>
             </>
           ) : (
             <>
-              <Button color="inherit" component={RouterLink} to="/login">
+              <Button variant="outlined" color="primary" component={RouterLink} to="/login" sx={{ mr: 1 }}>
                 Login
               </Button>
-              <Button color="inherit" component={RouterLink} to="/register">
+              <Button variant="outlined" color="primary" component={RouterLink} to="/register">
                 Register
               </Button>
             </>

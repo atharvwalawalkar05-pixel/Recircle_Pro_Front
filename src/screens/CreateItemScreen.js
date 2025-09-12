@@ -44,13 +44,13 @@ const CreateItemScreen = () => {
 
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', mt: 5 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
+      <Paper elevation={0} sx={{ p: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom align="center">Create New Listing</Typography>
         {error && <Typography color="error" align="center">{error}</Typography>}
         <Box component="form" onSubmit={submitHandler} sx={{ mt: 1 }}>
           <TextField margin="normal" required fullWidth label="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
           <TextField margin="normal" required fullWidth multiline rows={4} label="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-          <Button variant="contained" component="label" fullWidth sx={{ mt: 2 }}>
+          <Button variant="outlined" color="primary" component="label" fullWidth sx={{ mt: 2 }}>
             Upload Image
             <input type="file" hidden accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} />
           </Button>
@@ -58,7 +58,7 @@ const CreateItemScreen = () => {
           <FormControl fullWidth margin="normal"><InputLabel>Category</InputLabel><Select value={category} label="Category" onChange={(e) => setCategory(e.target.value)}><MenuItem value="Electronics">Electronics</MenuItem><MenuItem value="Furniture">Furniture</MenuItem><MenuItem value="Clothing">Clothing</MenuItem><MenuItem value="Books">Books</MenuItem><MenuItem value="Scrap Metal">Scrap Metal</MenuItem><MenuItem value="Other">Other</MenuItem></Select></FormControl>
           <FormControl fullWidth margin="normal"><InputLabel>Condition</InputLabel><Select value={condition} label="Condition" onChange={(e) => setCondition(e.target.value)}><MenuItem value="New">New</MenuItem><MenuItem value="Used - Like New">Used - Like New</MenuItem><MenuItem value="Used - Good">Used - Good</MenuItem><MenuItem value="Used - Fair">Used - Fair</MenuItem></Select></FormControl>
           <FormControl fullWidth margin="normal"><InputLabel>Type</InputLabel><Select value={itemType} label="Type" onChange={(e) => setItemType(e.target.value)}><MenuItem value="Item">Item</MenuItem><MenuItem value="Scrap">Scrap</MenuItem></Select></FormControl>
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled={loading}>{loading ? 'Creating...' : 'Create Listing'}</Button>
+          <Button type="submit" fullWidth variant="outlined" color="primary" sx={{ mt: 3, mb: 2 }} disabled={loading}>{loading ? 'Creating...' : 'Create Listing'}</Button>
         </Box>
       </Paper>
     </Box>

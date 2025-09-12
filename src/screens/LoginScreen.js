@@ -31,7 +31,7 @@ const LoginScreen = () => {
 
   return (
     <Box sx={{ maxWidth: 400, mx: 'auto', mt: 5 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
+      <Paper elevation={0} sx={{ p: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom align="center">
           Sign In
         </Typography>
@@ -64,7 +64,8 @@ const LoginScreen = () => {
           <Button
             type="submit"
             fullWidth
-            variant="contained"
+            variant="outlined"
+            color="primary"
             sx={{ mt: 3, mb: 2 }}
             disabled={loading}
           >
