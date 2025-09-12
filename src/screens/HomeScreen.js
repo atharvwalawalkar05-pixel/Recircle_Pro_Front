@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ItemCard from '../components/ItemCard';
-import { Box, Typography, CircularProgress, Grid, TextField, Button, FormControl, InputLabel, Select, MenuItem, Pagination } from '@mui/material';
+import { Box, Typography, CircularProgress, Grid, TextField, FormControl, InputLabel, Select, MenuItem, Pagination } from '@mui/material';
 
 const HomeScreen = () => {
   const [items, setItems] = useState([]); // Ensure initial state is an empty array

@@ -3,24 +3,24 @@ import { createTheme } from '@mui/material/styles';
 // Create a theme instance.
 const theme = createTheme({
   palette: {
-    mode: 'light', // Classic light mode
+    mode: 'dark', // Dark techno theme
     primary: {
-      main: '#2E3B55', // Classic navy blue
+      main: '#00FFFF', // Cyan neon
     },
     secondary: {
-      main: '#6B7B8C', // Classic gray-blue
+      main: '#FF00FF', // Magenta neon
     },
     background: {
-      default: '#F5F5F5', // Light gray background
-      paper: '#FFFFFF',   // White for components
+      default: '#0A0A0A', // Deep black
+      paper: '#1A1A1A',   // Dark gray for components
     },
     text: {
-      primary: '#2E3B55',
-      secondary: '#6B7B8C',
+      primary: '#FFFFFF',
+      secondary: '#B0B0B0',
     },
   },
   typography: {
-    fontFamily: '"Times New Roman", "Georgia", serif', // Classic serif font
+    fontFamily: '"Courier New", "Monaco", monospace', // Techno monospace font
     h4: {
       fontWeight: 700,
     },
@@ -32,48 +32,54 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0, // Square corners for classic look
-          textTransform: 'none', // Normal case
-          border: '2px solid', // Add border for 2D effect
-          boxShadow: 'none', // Remove shadows
+          borderRadius: 0, // Sharp corners for techno look
+          textTransform: 'uppercase', // Techno style
+          border: '2px solid #00FFFF', // Cyan border
+          boxShadow: '0 0 10px #00FFFF', // Neon glow
           '&:hover': {
-            boxShadow: 'none', // No hover shadow
-            backgroundColor: 'rgba(46, 59, 85, 0.1)', // Subtle hover
+            boxShadow: '0 0 20px #00FFFF', // Brighter glow on hover
+            backgroundColor: 'rgba(0, 255, 255, 0.1)',
           },
         },
         contained: {
-          border: '2px solid transparent',
+          backgroundColor: '#00FFFF',
+          color: '#0A0A0A',
           '&:hover': {
-            backgroundColor: '#2E3B55',
-            borderColor: '#2E3B55',
+            backgroundColor: '#00CCCC',
           },
         },
         outlined: {
           borderWidth: '2px',
+          '&:hover': {
+            borderColor: '#FF00FF',
+            boxShadow: '0 0 20px #FF00FF',
+          },
         },
       },
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          boxShadow: 'none', // Remove shadow for flat look
-          borderBottom: '2px solid #2E3B55',
+          backgroundColor: '#1A1A1A',
+          boxShadow: '0 0 10px #00FFFF',
+          borderBottom: '2px solid #00FFFF',
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          boxShadow: 'none', // Flat cards
-          border: '1px solid #E0E0E0',
+          backgroundColor: '#1A1A1A',
+          border: '1px solid #00FFFF',
+          boxShadow: '0 0 5px rgba(0, 255, 255, 0.3)',
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
         root: {
-          boxShadow: 'none', // Flat paper
-          border: '1px solid #E0E0E0',
+          backgroundColor: '#1A1A1A',
+          border: '1px solid #333333',
         },
       },
     },
