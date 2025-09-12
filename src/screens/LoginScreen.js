@@ -12,7 +12,7 @@ import {
   Alert,
   Link
 } from '@mui/material';
-import RecyclingIcon from '@mui/icons-material/Recycling';
+import HomeIcon from '@mui/icons-material/Home';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -53,7 +53,7 @@ const LoginScreen = () => {
         }}
       >
         <Box sx={{ textAlign: 'center', mb: 3 }}>
-          <RecyclingIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 1 }} />
+          <HomeIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 1 }} />
           <Typography variant="h4" component="h1" sx={{ fontWeight: 600, color: 'text.primary' }}>
             Welcome Back
           </Typography>

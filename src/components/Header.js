@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { AppBar, Toolbar, Typography, Button, Box, Chip } from '@mui/material';
-import RecyclingIcon from '@mui/icons-material/Recycling';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -17,7 +17,7 @@ const Header = () => {
     <AppBar position="static" color="default" elevation={1}>
       <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 4 } }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <RecyclingIcon sx={{ color: 'primary.main', fontSize: '2rem' }} />
+          <HomeIcon sx={{ color: 'primary.main', fontSize: '2rem' }} />
           <Typography
             variant="h6"
             component={RouterLink}

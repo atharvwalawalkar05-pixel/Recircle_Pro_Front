@@ -10,7 +10,7 @@ import {
   Box,
   Avatar
 } from '@mui/material';
-import RecyclingIcon from '@mui/icons-material/Recycling';
+import HomeIcon from '@mui/icons-material/Home';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const ItemCard = ({ item }) => {
@@ -79,7 +79,7 @@ const ItemCard = ({ item }) => {
               p: 0.5,
             }}
           >
-            <RecyclingIcon sx={{ color: 'primary.main', fontSize: '1.2rem' }} />
+            <HomeIcon sx={{ color: 'primary.main', fontSize: '1.2rem' }} />
           </Box>
         </Box>
 

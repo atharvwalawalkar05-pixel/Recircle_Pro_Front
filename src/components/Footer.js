@@ -1,8 +1,6 @@
 import React from 'react';
 import { Box, Typography, Container, Grid, Link, Divider } from '@mui/material';
-import RecyclingIcon from '@mui/icons-material/Recycling';
-import EcoIcon from '@mui/icons-material/Eco';
-import NatureIcon from '@mui/icons-material/Nature';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Footer = () => {
   return (
@@ -19,7 +17,7 @@ const Footer = () => {
           {/* Brand Section */}
           <Grid item xs={12} md={4}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <RecyclingIcon sx={{ mr: 1, color: 'primary.main' }} />
+              <HomeIcon sx={{ mr: 1, color: 'primary.main' }} />
               <Typography variant="h6" sx={{ fontWeight: 700 }}>
                 ReCircle
               </Typography>
@@ -29,9 +27,9 @@ const Footer = () => {
               in reducing waste and promoting sustainable living.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <EcoIcon sx={{ color: '#4CAF50' }} />
-              <NatureIcon sx={{ color: '#4CAF50' }} />
-              <RecyclingIcon sx={{ color: '#4CAF50' }} />
+              <HomeIcon sx={{ color: '#4CAF50' }} />
+              <HomeIcon sx={{ color: '#4CAF50' }} />
+              <HomeIcon sx={{ color: '#4CAF50' }} />
             </Box>
           </Grid>
 

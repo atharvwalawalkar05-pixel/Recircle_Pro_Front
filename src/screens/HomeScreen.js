@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ItemCard from '../components/ItemCard';
 import { Box, Typography, CircularProgress, Grid, TextField, Button, FormControl, InputLabel, Select, MenuItem, Pagination, Container, Paper, Card, CardContent, Avatar } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import RecyclingIcon from '@mui/icons-material/Recycling';
-import EcoIcon from '@mui/icons-material/Eco';
+import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 
 const HomeScreen = () => {
@@ -101,7 +100,7 @@ const HomeScreen = () => {
             <Grid item xs={12} md={4}>
               <Card sx={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}>
                 <CardContent sx={{ textAlign: 'center', py: 2 }}>
-                  <RecyclingIcon sx={{ fontSize: '2rem', mb: 1 }} />
+                  <HomeIcon sx={{ fontSize: '2rem', mb: 1 }} />
                   <Typography variant="h4" sx={{ fontWeight: 700 }}>
                     10K+
                   </Typography>
@@ -127,7 +126,7 @@ const HomeScreen = () => {
             <Grid item xs={12} md={4}>
               <Card sx={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}>
                 <CardContent sx={{ textAlign: 'center', py: 2 }}>
-                  <EcoIcon sx={{ fontSize: '2rem', mb: 1 }} />
+                  <HomeIcon sx={{ fontSize: '2rem', mb: 1 }} />
                   <Typography variant="h4" sx={{ fontWeight: 700 }}>
                     50T
                   </Typography>
@@ -237,7 +236,7 @@ const HomeScreen = () => {
                       backgroundColor: 'background.paper',
                     }}
                   >
-                    <RecyclingIcon sx={{ fontSize: '4rem', color: 'text.secondary', mb: 2 }} />
+                    <HomeIcon sx={{ fontSize: '4rem', color: 'text.secondary', mb: 2 }} />
                     <Typography variant="h5" sx={{ mb: 2, color: 'text.secondary' }}>
                       No items found
                     </Typography>
