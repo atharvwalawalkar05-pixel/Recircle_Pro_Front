@@ -124,19 +124,7 @@ const HomeScreen = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}>
-                <CardContent sx={{ textAlign: 'center', py: 2 }}>
-                  <HomeIcon sx={{ fontSize: '2rem', mb: 1 }} />
-                  <Typography variant="h4" sx={{ fontWeight: 700 }}>
-                    50T
-                  </Typography>
-                  <Typography variant="body2">
-                    CO₂ Saved
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+            {/* CO2 Saved card removed */}
           </Grid>
         </Container>
       </Box>
