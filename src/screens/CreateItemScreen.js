@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, Paper, IconButton } from '@mui/material';
+import { TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, Paper } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const MAX_IMAGES = 4;
@@ -23,15 +23,15 @@ const CreateItemScreen = () => {
   // Handle image selection and preview
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    let selectedFiles = files;
     if (files.length > MAX_IMAGES) {
       setError(`You can upload up to ${MAX_IMAGES} images only.`);
-      selectedFiles = files.slice(0, MAX_IMAGES);
+      setImageFiles(files.slice(0, MAX_IMAGES));
+      setImagePreviews(files.slice(0, MAX_IMAGES).map(file => URL.createObjectURL(file)));
     } else {
       setError('');
+      setImageFiles(files);
+      setImagePreviews(files.map(file => URL.createObjectURL(file)));
     }
-    setImageFiles(selectedFiles);
-    setImagePreviews(selectedFiles.map(file => URL.createObjectURL(file)));
   };
 
   // Remove an image before upload
@@ -102,7 +102,7 @@ const CreateItemScreen = () => {
                     alt={`preview-${idx}`}
                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 8, border: '1px solid #ccc' }}
                   />
-                  <IconButton
+                  <Button
                     size="small"
                     sx={{
                       position: 'absolute',
@@ -118,7 +118,7 @@ const CreateItemScreen = () => {
                     onClick={() => handleRemoveImage(idx)}
                   >
                     <DeleteIcon fontSize="small" />
-                  </IconButton>
+                  </Button>
                 </Box>
               ))}
             </Box>
