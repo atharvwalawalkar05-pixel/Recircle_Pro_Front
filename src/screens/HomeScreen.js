@@ -15,6 +15,7 @@ import {
   Pagination,
   Container,
   Paper,
+  Chip,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import PostAddIcon from '@mui/icons-material/PostAdd';
@@ -78,23 +79,32 @@ const HomeScreen = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          backgroundColor: 'primary.main',
+          position: 'relative',
+          background: 'linear-gradient(135deg, rgba(46,125,50,1) 0%, rgba(46,125,50,0.92) 35%, rgba(25,118,210,0.9) 100%)',
           color: 'white',
           py: { xs: 8, md: 12 },
           textAlign: 'center',
+          overflow: 'hidden',
         }}
       >
-        <Container maxWidth="md">
+        {/* Decorative blobs */}
+        <Box sx={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background: 'radial-gradient(800px 400px at 10% 20%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%), radial-gradient(600px 300px at 90% 10%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%)'
+        }} />
+        <Container maxWidth="md" sx={{ position: 'relative' }}>
           <Typography
             variant="h2"
             component="h1"
-            sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '2.5rem', md: '3.5rem' } }}
+            sx={{ fontWeight: 800, letterSpacing: '-0.5px', mb: 2, fontSize: { xs: '2.4rem', md: '3.4rem' } }}
           >
             Give Items a Second Life
           </Typography>
           <Typography
             variant="h5"
-            sx={{ mb: 4, opacity: 0.9, fontWeight: 300, maxWidth: '700px', mx: 'auto' }}
+            sx={{ mb: 4, opacity: 0.95, fontWeight: 300, maxWidth: '760px', mx: 'auto' }}
           >
             Join our community in reducing waste and promoting sustainable living
             through reuse and recycling.
@@ -104,13 +114,16 @@ const HomeScreen = () => {
           <Paper
             component="form"
             onSubmit={searchHandler}
+            elevation={6}
             sx={{
-              p: '8px 16px',
+              p: '10px 14px',
               display: 'flex',
               alignItems: 'center',
-              maxWidth: 600,
+              maxWidth: 720,
               mx: 'auto',
-              mt: 4,
+              mt: 2,
+              borderRadius: 4,
+              backdropFilter: 'blur(4px)',
             }}
           >
             <TextField
@@ -124,33 +137,74 @@ const HomeScreen = () => {
                 startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.disabled' }} />,
               }}
             />
-            <Button type="submit" variant="contained" sx={{ ml: 1 }}>
+            <Button type="submit" variant="contained" color="secondary" sx={{ ml: 1, px: 3, fontWeight: 600 }}>
               Search
             </Button>
           </Paper>
+
+          {/* Quick filter chips */}
+          <Box sx={{ mt: 3, display: 'flex', flexWrap: 'wrap', gap: 1.2, justifyContent: 'center' }}>
+            <Chip
+              label="All"
+              onClick={() => { setCategory(''); setPage(1); }}
+              color={category === '' ? 'default' : 'default'}
+              variant={category === '' ? 'filled' : 'outlined'}
+              sx={{ bgcolor: category === '' ? 'rgba(255,255,255,0.2)' : 'transparent', color: 'white', borderColor: 'rgba(255,255,255,0.6)' }}
+            />
+            {categories.map((cat) => (
+              <Chip
+                key={cat}
+                label={cat}
+                onClick={() => { setCategory(cat); setPage(1); }}
+                variant={category === cat ? 'filled' : 'outlined'}
+                sx={{ bgcolor: category === cat ? 'rgba(255,255,255,0.2)' : 'transparent', color: 'white', borderColor: 'rgba(255,255,255,0.6)' }}
+              />
+            ))}
+          </Box>
         </Container>
       </Box>
 
       {/* How It Works Section */}
       <Container sx={{ py: 8 }}>
-        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 600, mb: 6 }}>
+        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 700, mb: 6 }}>
           How It Works
         </Typography>
-        <Grid container spacing={5} justifyContent="center">
-          <Grid item xs={12} sm={4} sx={{ textAlign: 'center' }}>
-            <PostAddIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>1. Post an Item</Typography>
-            <Typography color="text.secondary">Easily list your unwanted items or scraps for free. Just add a title, description, and photos.</Typography>
+        <Grid container spacing={3} justifyContent="center">
+          <Grid item xs={12} sm={6} md={4}>
+            <Paper elevation={3} sx={{ p: 3, height: '100%', textAlign: 'center', borderRadius: 3 }}>
+              <Box sx={{
+                mx: 'auto', mb: 2, width: 64, height: 64, borderRadius: '50%', display: 'grid', placeItems: 'center',
+                backgroundColor: 'rgba(46,125,50,0.1)', color: 'primary.main'
+              }}>
+                <PostAddIcon sx={{ fontSize: 34 }} />
+              </Box>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>1. Post an Item</Typography>
+              <Typography color="text.secondary">Easily list your unwanted items or scraps for free. Just add a title, description, and photos.</Typography>
+            </Paper>
           </Grid>
-          <Grid item xs={12} sm={4} sx={{ textAlign: 'center' }}>
-            <ConnectWithoutContactIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>2. Connect with Others</Typography>
-            <Typography color="text.secondary">Browse listings and connect with people in your community to arrange a pickup.</Typography>
+          <Grid item xs={12} sm={6} md={4}>
+            <Paper elevation={3} sx={{ p: 3, height: '100%', textAlign: 'center', borderRadius: 3 }}>
+              <Box sx={{
+                mx: 'auto', mb: 2, width: 64, height: 64, borderRadius: '50%', display: 'grid', placeItems: 'center',
+                backgroundColor: 'rgba(25,118,210,0.1)', color: 'secondary.main'
+              }}>
+                <ConnectWithoutContactIcon sx={{ fontSize: 34 }} />
+              </Box>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>2. Connect with Others</Typography>
+              <Typography color="text.secondary">Browse listings and connect with people in your community to arrange a pickup.</Typography>
+            </Paper>
           </Grid>
-          <Grid item xs={12} sm={4} sx={{ textAlign: 'center' }}>
-            <AutorenewIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>3. Give it a New Life</Typography>
-            <Typography color="text.secondary">Help reduce waste by giving items a second chance, contributing to a more sustainable planet.</Typography>
+          <Grid item xs={12} sm={6} md={4}>
+            <Paper elevation={3} sx={{ p: 3, height: '100%', textAlign: 'center', borderRadius: 3 }}>
+              <Box sx={{
+                mx: 'auto', mb: 2, width: 64, height: 64, borderRadius: '50%', display: 'grid', placeItems: 'center',
+                backgroundColor: 'rgba(76,175,80,0.1)', color: 'success.main'
+              }}>
+                <AutorenewIcon sx={{ fontSize: 34 }} />
+              </Box>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>3. Give it a New Life</Typography>
+              <Typography color="text.secondary">Help reduce waste by giving items a second chance, contributing to a more sustainable planet.</Typography>
+            </Paper>
           </Grid>
         </Grid>
       </Container>
@@ -159,11 +213,16 @@ const HomeScreen = () => {
       <Box sx={{ backgroundColor: 'grey.100', py: 8 }}>
         <Container maxWidth="lg">
           {/* Listings Header */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexWrap: 'wrap', gap: 2 }}>
-            <Typography variant="h4" component="h2" sx={{ fontWeight: 600 }}>
-              Latest Listings
-            </Typography>
-            <FormControl variant="outlined" sx={{ minWidth: 220 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, gap: 2, flexWrap: 'wrap' }}>
+            <Box>
+              <Typography variant="h4" component="h2" sx={{ fontWeight: 700, lineHeight: 1 }}>
+                Latest Listings
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Explore items shared by the community
+              </Typography>
+            </Box>
+            <FormControl variant="outlined" size="small" sx={{ minWidth: 220, backgroundColor: 'background.paper' }}>
               <InputLabel>Category</InputLabel>
               <Select
                 value={category}
