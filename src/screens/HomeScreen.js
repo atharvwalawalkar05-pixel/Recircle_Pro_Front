@@ -75,163 +75,143 @@ const HomeScreen = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
+    <Box sx={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
       {/* Hero Section */}
-      <Box
-        sx={{
-          position: 'relative',
-          background: 'linear-gradient(135deg, rgba(46,125,50,1) 0%, rgba(46,125,50,0.92) 35%, rgba(25,118,210,0.9) 100%)',
-          color: 'white',
-          py: { xs: 8, md: 12 },
-          textAlign: 'center',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Decorative blobs */}
-        <Box sx={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          background: 'radial-gradient(800px 400px at 10% 20%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%), radial-gradient(600px 300px at 90% 10%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%)'
-        }} />
-        <Container maxWidth="md" sx={{ position: 'relative' }}>
-          <Typography
-            variant="h2"
-            component="h1"
-            sx={{ fontWeight: 800, letterSpacing: '-0.5px', mb: 2, fontSize: { xs: '2.4rem', md: '3.4rem' } }}
-          >
-            Give Items a Second Life
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{ mb: 4, opacity: 0.95, fontWeight: 300, maxWidth: '760px', mx: 'auto' }}
-          >
-            Join our community in reducing waste and promoting sustainable living
-            through reuse and recycling.
-          </Typography>
+      <Box sx={{ textAlign: 'left', px: { xs: 2, md: 6 }, py: 4 }}>
+        <Typography
+          variant="h1"
+          sx={{
+            fontWeight: 800,
+            textTransform: 'uppercase',
+            letterSpacing: '2px',
+            color: 'text.primary',
+            mb: 2,
+            fontSize: { xs: '2rem', md: '3rem' },
+          }}
+        >
+          ReCircle Recycling
+        </Typography>
+        <Box
+          component="img"
+          src="https://via.placeholder.com/1200x400?text=Recycling+Hero+Image" // Replace with actual image URL
+          alt="Hero Image"
+          sx={{ width: '100%', height: 'auto', borderRadius: 0 }}
+        />
+      </Box>
 
-          {/* Search Bar */}
-          <Paper
-            component="form"
-            onSubmit={searchHandler}
-            elevation={6}
-            sx={{
-              p: '10px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              maxWidth: 720,
-              mx: 'auto',
-              mt: 2,
-              borderRadius: 4,
-              backdropFilter: 'blur(4px)',
-            }}
+      {/* We Made Section */}
+      <Box sx={{ backgroundColor: 'primary.main', py: 6, textAlign: 'center' }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            sx={{ color: '#FFFFFF', mb: 4, textTransform: 'uppercase', fontWeight: 700 }}
           >
-            <TextField
-              fullWidth
-              variant="standard"
-              placeholder="Search for electronics, furniture, books..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              InputProps={{
-                disableUnderline: true,
-                startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.disabled' }} />,
-              }}
-            />
-            <Button type="submit" variant="contained" color="secondary" sx={{ ml: 1, px: 3, fontWeight: 600 }}>
-              Search
-            </Button>
-          </Paper>
-
-          {/* Quick filter chips */}
-          <Box sx={{ mt: 3, display: 'flex', flexWrap: 'wrap', gap: 1.2, justifyContent: 'center' }}>
-            <Chip
-              label="All"
-              onClick={() => { setCategory(''); setPage(1); }}
-              color={category === '' ? 'default' : 'default'}
-              variant={category === '' ? 'filled' : 'outlined'}
-              sx={{ bgcolor: category === '' ? 'rgba(255,255,255,0.2)' : 'transparent', color: 'white', borderColor: 'rgba(255,255,255,0.6)' }}
-            />
-            {categories.map((cat) => (
-              <Chip
-                key={cat}
-                label={cat}
-                onClick={() => { setCategory(cat); setPage(1); }}
-                variant={category === cat ? 'filled' : 'outlined'}
-                sx={{ bgcolor: category === cat ? 'rgba(255,255,255,0.2)' : 'transparent', color: 'white', borderColor: 'rgba(255,255,255,0.6)' }}
+            We Promote Reuse & Creative Recycling
+          </Typography>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={12} md={4}>
+              <Box
+                component="img"
+                src="https://via.placeholder.com/400x300?text=Reuse+Concept+1" // Replace with actual image
+                alt="Concept 1"
+                sx={{ width: '100%', height: 'auto', borderRadius: 0 }}
               />
-            ))}
-          </Box>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box
+                component="img"
+                src="https://via.placeholder.com/400x300?text=Reuse+Concept+2" // Replace with actual image
+                alt="Concept 2"
+                sx={{ width: '100%', height: 'auto', borderRadius: 0 }}
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box
+                component="img"
+                src="https://via.placeholder.com/400x300?text=Reuse+Concept+3" // Replace with actual image
+                alt="Concept 3"
+                sx={{ width: '100%', height: 'auto', borderRadius: 0 }}
+              />
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
-      {/* How It Works Section */}
-      <Container sx={{ py: 8 }}>
-        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 700, mb: 6 }}>
-          How It Works
-        </Typography>
-        <Grid container spacing={3} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, height: '100%', textAlign: 'center', borderRadius: 3 }}>
-              <Box sx={{
-                mx: 'auto', mb: 2, width: 64, height: 64, borderRadius: '50%', display: 'grid', placeItems: 'center',
-                backgroundColor: 'rgba(46,125,50,0.1)', color: 'primary.main'
-              }}>
-                <PostAddIcon sx={{ fontSize: 34 }} />
-              </Box>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>1. Post an Item</Typography>
-              <Typography color="text.secondary">Easily list your unwanted items or scraps for free. Just add a title, description, and photos.</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, height: '100%', textAlign: 'center', borderRadius: 3 }}>
-              <Box sx={{
-                mx: 'auto', mb: 2, width: 64, height: 64, borderRadius: '50%', display: 'grid', placeItems: 'center',
-                backgroundColor: 'rgba(25,118,210,0.1)', color: 'secondary.main'
-              }}>
-                <ConnectWithoutContactIcon sx={{ fontSize: 34 }} />
-              </Box>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>2. Connect with Others</Typography>
-              <Typography color="text.secondary">Browse listings and connect with people in your community to arrange a pickup.</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, height: '100%', textAlign: 'center', borderRadius: 3 }}>
-              <Box sx={{
-                mx: 'auto', mb: 2, width: 64, height: 64, borderRadius: '50%', display: 'grid', placeItems: 'center',
-                backgroundColor: 'rgba(76,175,80,0.1)', color: 'success.main'
-              }}>
-                <AutorenewIcon sx={{ fontSize: 34 }} />
-              </Box>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>3. Give it a New Life</Typography>
-              <Typography color="text.secondary">Help reduce waste by giving items a second chance, contributing to a more sustainable planet.</Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
-
-      {/* Listings Section */}
-      <Box sx={{ backgroundColor: 'grey.100', py: 8 }}>
+      {/* Services Section */}
+      <Box sx={{ py: 6, textAlign: 'center' }}>
         <Container maxWidth="lg">
-          {/* Listings Header */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, gap: 2, flexWrap: 'wrap' }}>
-            <Box>
-              <Typography variant="h4" component="h2" sx={{ fontWeight: 700, lineHeight: 1 }}>
-                Latest Listings
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Explore items shared by the community
-              </Typography>
-            </Box>
-            <FormControl variant="outlined" size="small" sx={{ minWidth: 220, backgroundColor: 'background.paper' }}>
-              <InputLabel>Category</InputLabel>
+          <Grid container spacing={4} justifyContent="center">
+            <Grid item xs={12} sm={4}>
+              <Box sx={{ mb: 2 }}>
+                <PostAddIcon sx={{ fontSize: 50, color: 'secondary.main' }} />
+              </Box>
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>Free Listing</Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box sx={{ mb: 2 }}>
+                <ConnectWithoutContactIcon sx={{ fontSize: 50, color: 'secondary.main' }} />
+              </Box>
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>Community Connection</Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box sx={{ mb: 2 }}>
+                <AutorenewIcon sx={{ fontSize: 50, color: 'secondary.main' }} />
+              </Box>
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>Sustainable Impact</Typography>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Provide Section with Listings */}
+      <Box sx={{ backgroundColor: '#FFFFFF', py: 6 }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            sx={{ textAlign: 'center', mb: 4, textTransform: 'uppercase', fontWeight: 700 }}
+          >
+            We Provide You The Best Recycling Options
+          </Typography>
+          <Typography sx={{ textAlign: 'center', mb: 6, color: 'text.secondary' }}>
+            Browse our latest listings and give items a second life.
+          </Typography>
+
+          {/* Integrated Search and Filters */}
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4, flexWrap: 'wrap', gap: 2 }}>
+            <Paper
+              component="form"
+              onSubmit={searchHandler}
+              sx={{
+                p: '4px 8px',
+                display: 'flex',
+                alignItems: 'center',
+                width: { xs: '100%', sm: 300 },
+                borderRadius: 20,
+              }}
+            >
+              <TextField
+                fullWidth
+                variant="standard"
+                placeholder="Search items..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                InputProps={{
+                  disableUnderline: true,
+                  startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+                }}
+              />
+              <Button type="submit" sx={{ minWidth: 'auto' }}>
+                <SearchIcon />
+              </Button>
+            </Paper>
+            <FormControl sx={{ minWidth: 150 }}>
               <Select
                 value={category}
-                label="Category"
                 onChange={handleCategoryChange}
+                displayEmpty
+                size="small"
               >
-                <MenuItem value="">
-                  All Categories
-                </MenuItem>
+                <MenuItem value="">All Categories</MenuItem>
                 {categories.map((cat) => (
                   <MenuItem key={cat} value={cat}>
                     {cat}
@@ -243,51 +223,71 @@ const HomeScreen = () => {
 
           {/* Items Grid */}
           {loading ? (
-            <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
-              <CircularProgress size={60} />
+            <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+              <CircularProgress />
             </Box>
           ) : error ? (
-            <Box sx={{ textAlign: 'center', py: 8 }}>
-              <Typography color="error" variant="h6">{error}</Typography>
-            </Box>
+            <Typography color="error" align="center">{error}</Typography>
           ) : (
             <>
-              <Grid container spacing={3}>
+              <Grid container spacing={2}>
                 {items.length === 0 ? (
                   <Grid item xs={12}>
-                    <Paper sx={{ p: 4, textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none' }}>
-                      <Typography variant="h6" sx={{ mb: 2, color: 'text.secondary' }}>
-                        No items found for your search.
-                      </Typography>
-                      <Button
-                        variant="outlined"
-                        onClick={() => {
-                          setKeyword('');
-                          setSearchTerm('');
-                          setCategory('');
-                          setPage(1);
-                        }}
-                      >
-                        Clear Search & View All
-                      </Button>
-                    </Paper>
+                    <Typography align="center" color="text.secondary">
+                      No items found. Try adjusting your search.
+                    </Typography>
                   </Grid>
                 ) : (
                   items.map((item) => (
-                    <Grid item key={item._id} xs={12} sm={6} md={4} lg={3}>
+                    <Grid item key={item._id} xs={12} sm={6} md={4}>
                       <ItemCard item={item} />
                     </Grid>
                   ))
                 )}
               </Grid>
               {pages > 1 && (
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
-                  <Pagination count={pages} page={page} onChange={handlePageChange} color="primary" size="large" />
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+                  <Pagination count={pages} page={page} onChange={handlePageChange} />
                 </Box>
               )}
             </>
           )}
+
+          {/* Additional Images */}
+          <Grid container spacing={2} sx={{ mt: 6 }}>
+            <Grid item xs={12} md={4}>
+              <Box
+                component="img"
+                src="https://via.placeholder.com/400x300?text=Recycling+Image+1" // Replace with actual
+                alt="Image 1"
+                sx={{ width: '100%', height: 'auto' }}
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box
+                component="img"
+                src="https://via.placeholder.com/400x300?text=Recycling+Image+2" // Replace with actual
+                alt="Image 2"
+                sx={{ width: '100%', height: 'auto' }}
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box
+                component="img"
+                src="https://via.placeholder.com/400x300?text=Recycling+Image+3" // Replace with actual
+                alt="Image 3"
+                sx={{ width: '100%', height: 'auto' }}
+              />
+            </Grid>
+          </Grid>
         </Container>
+      </Box>
+
+      {/* Footer Note */}
+      <Box sx={{ textAlign: 'center', py: 2, backgroundColor: '#FFFFFF' }}>
+        <Typography variant="body2" color="text.secondary">
+          © 2023 ReCircle
+        </Typography>
       </Box>
     </Box>
   );

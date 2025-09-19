@@ -14,10 +14,9 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" color="default" elevation={1}>
-      <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 4 } }}>
+    <AppBar position="static" color="transparent" elevation={0}>
+      <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 6 }, py: 1 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <HomeIcon sx={{ color: 'primary.main', fontSize: '2rem' }} />
           <Typography
             variant="h6"
             component={RouterLink}
@@ -26,79 +25,154 @@ const Header = () => {
               textDecoration: 'none',
               color: 'text.primary',
               fontWeight: 700,
-              fontSize: '1.5rem',
+              fontSize: '1.2rem',
+              letterSpacing: '1px',
+            }}
+          >
+            RECIRCLE
+          </Typography>
+        </Box>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 3 } }}>
+          <Typography
+            component={RouterLink}
+            to="/"
+            sx={{
+              textDecoration: 'none',
+              color: 'text.primary',
+              fontSize: '0.9rem',
+              fontWeight: 500,
               '&:hover': {
                 color: 'primary.main',
               },
             }}
           >
-            ReCircle
+            Home
           </Typography>
-          <Chip
-            label="♻️"
-            size="small"
+          <Typography
+            component={RouterLink}
+            to="/about" // Adapt to your routes; create if needed
             sx={{
-              backgroundColor: 'primary.main',
-              color: 'white',
-              fontSize: '0.75rem',
-              height: '20px',
-              '& .MuiChip-label': {
-                px: 0.5,
+              textDecoration: 'none',
+              color: 'text.primary',
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              '&:hover': {
+                color: 'primary.main',
               },
             }}
-          />
-        </Box>
-
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          >
+            About
+          </Typography>
+          <Typography
+            component={RouterLink}
+            to="/contact" // Adapt to your routes
+            sx={{
+              textDecoration: 'none',
+              color: 'text.primary',
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              '&:hover': {
+                color: 'primary.main',
+              },
+            }}
+          >
+            Contact
+          </Typography>
+          <Typography
+            component={RouterLink}
+            to="/faq" // Adapt to your routes
+            sx={{
+              textDecoration: 'none',
+              color: 'text.primary',
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              '&:hover': {
+                color: 'primary.main',
+              },
+            }}
+          >
+            FAQ
+          </Typography>
           {user ? (
             <>
-              <Button
-                variant="outlined"
-                color="primary"
+              <Typography
                 component={RouterLink}
                 to="/create"
-                sx={{ fontWeight: 500 }}
+                sx={{
+                  textDecoration: 'none',
+                  color: 'text.primary',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
               >
                 List Item
-              </Button>
-              <Button
-                variant="outlined"
-                color="primary"
+              </Typography>
+              <Typography
                 component={RouterLink}
                 to="/profile"
-                sx={{ fontWeight: 500 }}
+                sx={{
+                  textDecoration: 'none',
+                  color: 'text.primary',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
               >
-                My Items
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
+                Profile
+              </Typography>
+              <Typography
                 onClick={logoutHandler}
-                sx={{ fontWeight: 500 }}
+                sx={{
+                  cursor: 'pointer',
+                  color: 'text.primary',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
               >
                 Sign Out
-              </Button>
+              </Typography>
             </>
           ) : (
             <>
-              <Button
-                variant="text"
-                color="primary"
+              <Typography
                 component={RouterLink}
                 to="/login"
-                sx={{ fontWeight: 500 }}
+                sx={{
+                  textDecoration: 'none',
+                  color: 'text.primary',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
               >
                 Sign In
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
+              </Typography>
+              <Typography
                 component={RouterLink}
                 to="/register"
-                sx={{ fontWeight: 500 }}
+                sx={{
+                  textDecoration: 'none',
+                  color: 'text.primary',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
               >
                 Join Now
-              </Button>
+              </Typography>
             </>
           )}
         </Box>
