@@ -1,0 +1,39 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00796B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#004D40" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0"/>
+      <feComposite operator="in" in2="SourceGraphic" result="monoNoise"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#F8F9FA"/>
+  
+  <!-- Recycling Symbol Elements -->
+  <g transform="translate(960, 540) scale(1.5)" opacity="0.15" fill="#00796B">
+    <!-- Arrow 1 -->
+    <path d="M-200,0 A200,200 0 0,1 -100,-173.2 L-50,-86.6 A100,100 0 0,0 -100,0 Z" transform="rotate(0)"/>
+    <!-- Arrow 2 -->
+    <path d="M-200,0 A200,200 0 0,1 -100,-173.2 L-50,-86.6 A100,100 0 0,0 -100,0 Z" transform="rotate(120)"/>
+    <!-- Arrow 3 -->
+    <path d="M-200,0 A200,200 0 0,1 -100,-173.2 L-50,-86.6 A100,100 0 0,0 -100,0 Z" transform="rotate(240)"/>
+  </g>
+  
+  <!-- Overlay Pattern -->
+  <rect width="100%" height="100%" fill="url(#bg-gradient)" opacity="0.9"/>
+  
+  <!-- Subtle Noise Texture -->
+  <rect width="100%" height="100%" filter="url(#noise)" opacity="0.05"/>
+  
+  <!-- Decorative Elements -->
+  <g opacity="0.2" stroke="#FFFFFF" stroke-width="1" fill="none">
+    <circle cx="200" cy="200" r="100"/>
+    <circle cx="1720" cy="880" r="150"/>
+    <circle cx="960" cy="540" r="300"/>
+  </g>
+</svg>

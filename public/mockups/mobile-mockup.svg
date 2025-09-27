@@ -1,0 +1,197 @@
+<svg width="375" height="3500" viewBox="0 0 375 3500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00796B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#004D40" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="shadow-1">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.2"/>
+    </filter>
+    <filter id="shadow-2">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="card-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#F8F9FA" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#F8F9FA"/>
+  
+  <!-- Header/Navigation -->
+  <g id="header">
+    <rect width="375" height="70" fill="#FFFFFF" filter="url(#shadow-1)"/>
+    <text x="20" y="43" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#00796B">RECIRCLE</text>
+    
+    <!-- Hamburger Menu -->
+    <g transform="translate(325, 25)">
+      <rect width="30" height="4" rx="2" fill="#263238"/>
+      <rect y="10" width="30" height="4" rx="2" fill="#263238"/>
+      <rect y="20" width="30" height="4" rx="2" fill="#263238"/>
+    </g>
+  </g>
+  
+  <!-- Hero Section -->
+  <g id="hero-section">
+    <rect y="70" width="375" height="500" fill="url(#hero-gradient)"/>
+    
+    <!-- Recycling Symbol Background -->
+    <g transform="translate(187.5, 320) scale(0.8)" opacity="0.15" fill="#FFFFFF">
+      <path d="M-200,0 A200,200 0 0,1 -100,-173.2 L-50,-86.6 A100,100 0 0,0 -100,0 Z" transform="rotate(0)"/>
+      <path d="M-200,0 A200,200 0 0,1 -100,-173.2 L-50,-86.6 A100,100 0 0,0 -100,0 Z" transform="rotate(120)"/>
+      <path d="M-200,0 A200,200 0 0,1 -100,-173.2 L-50,-86.6 A100,100 0 0,0 -100,0 Z" transform="rotate(240)"/>
+    </g>
+    
+    <!-- Hero Content -->
+    <g transform="translate(20, 120)">
+      <rect width="335" height="400" rx="8" fill="rgba(255,255,255,0.1)" filter="url(#shadow-2)"/>
+      
+      <text x="20" y="60" font-family="Inter, sans-serif" font-size="32" font-weight="900" fill="#FFFFFF" filter="url(#shadow-1)">RECIRCLE RECYCLING</text>
+      <text x="20" y="100" font-family="Inter, sans-serif" font-size="18" font-weight="500" fill="#FFFFFF">Sustainable Solutions for a Circular Economy</text>
+      
+      <text x="20" y="150" width="295" font-family="Inter, sans-serif" font-size="14" fill="#FFFFFF" opacity="0.9">
+        Join our community to give your unused items a second life. Help reduce waste and connect with people who can use what you no longer need.
+      </text>
+      
+      <!-- CTA Buttons -->
+      <rect x="20" y="220" width="295" height="50" rx="25" fill="#FFB74D" filter="url(#shadow-1)"/>
+      <text x="167.5" y="252" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#263238" text-anchor="middle">Get Started</text>
+      
+      <rect x="20" y="290" width="295" height="50" rx="25" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+      <text x="167.5" y="322" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Learn More</text>
+    </g>
+  </g>
+  
+  <!-- Feature Cards Section -->
+  <g id="feature-section" transform="translate(0, 620)">
+    <text x="187.5" y="60" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#263238" text-anchor="middle">How It Works</text>
+    
+    <!-- Feature Cards -->
+    <g transform="translate(20, 100)">
+      <!-- Card 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="335" height="320" rx="12" fill="url(#card-gradient)" filter="url(#shadow-2)"/>
+        <circle cx="167.5" cy="80" r="50" fill="#4DB6AC" opacity="0.8"/>
+        <text x="167.5" cy="95" font-family="Inter, sans-serif" font-size="36" font-weight="300" fill="#FFFFFF" text-anchor="middle">1</text>
+        <text x="167.5" y="160" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#00796B" text-anchor="middle">List Your Items</text>
+        <text x="167.5" y="200" width="275" font-family="Inter, sans-serif" font-size="14" fill="#546E7A" text-anchor="middle" text-length="275">
+          Photograph and list items you no longer need. Provide details about condition and availability.
+        </text>
+        <rect x="92.5" y="240" width="150" height="50" rx="25" fill="#00796B"/>
+        <text x="167.5" y="272" font-family="Inter, sans-serif" font-size="16" font-weight="500" fill="#FFFFFF" text-anchor="middle">List Now</text>
+      </g>
+      
+      <!-- Card 2 -->
+      <g transform="translate(0, 340)">
+        <rect width="335" height="320" rx="12" fill="url(#card-gradient)" filter="url(#shadow-2)"/>
+        <circle cx="167.5" cy="80" r="50" fill="#4DB6AC" opacity="0.8"/>
+        <text x="167.5" cy="95" font-family="Inter, sans-serif" font-size="36" font-weight="300" fill="#FFFFFF" text-anchor="middle">2</text>
+        <text x="167.5" y="160" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#00796B" text-anchor="middle">Connect</text>
+        <text x="167.5" y="200" width="275" font-family="Inter, sans-serif" font-size="14" fill="#546E7A" text-anchor="middle" text-length="275">
+          Connect with interested parties who can use your items. Arrange pickup or delivery details.
+        </text>
+        <rect x="92.5" y="240" width="150" height="50" rx="25" fill="#00796B"/>
+        <text x="167.5" y="272" font-family="Inter, sans-serif" font-size="16" font-weight="500" fill="#FFFFFF" text-anchor="middle">Browse Items</text>
+      </g>
+      
+      <!-- Card 3 -->
+      <g transform="translate(0, 680)">
+        <rect width="335" height="320" rx="12" fill="url(#card-gradient)" filter="url(#shadow-2)"/>
+        <circle cx="167.5" cy="80" r="50" fill="#4DB6AC" opacity="0.8"/>
+        <text x="167.5" cy="95" font-family="Inter, sans-serif" font-size="36" font-weight="300" fill="#FFFFFF" text-anchor="middle">3</text>
+        <text x="167.5" y="160" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#00796B" text-anchor="middle">Reduce Waste</text>
+        <text x="167.5" y="200" width="275" font-family="Inter, sans-serif" font-size="14" fill="#546E7A" text-anchor="middle" text-length="275">
+          Help reduce landfill waste by giving items a second life. Track your environmental impact.
+        </text>
+        <rect x="92.5" y="240" width="150" height="50" rx="25" fill="#00796B"/>
+        <text x="167.5" y="272" font-family="Inter, sans-serif" font-size="16" font-weight="500" fill="#FFFFFF" text-anchor="middle">Learn More</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Item Listings Section -->
+  <g id="items-section" transform="translate(0, 1800)">
+    <text x="187.5" y="60" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#263238" text-anchor="middle">Available Items</text>
+    
+    <!-- Search and Filter -->
+    <g transform="translate(20, 100)">
+      <rect width="335" height="120" rx="8" fill="#FFFFFF" filter="url(#shadow-1)"/>
+      <rect x="20" y="20" width="295" height="40" rx="20" fill="#F5F5F5"/>
+      <text x="40" y="45" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Search items...</text>
+      
+      <rect x="20" y="70" width="150" height="30" rx="15" fill="#F5F5F5"/>
+      <text x="95" y="90" font-family="Inter, sans-serif" font-size="14" fill="#546E7A" text-anchor="middle">Category</text>
+      
+      <rect x="180" y="70" width="135" height="30" rx="15" fill="#00796B"/>
+      <text x="247.5" y="90" font-family="Inter, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">Search</text>
+    </g>
+    
+    <!-- Item Grid -->
+    <g transform="translate(20, 240)">
+      <!-- Item 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="335" height="200" rx="8" fill="#FFFFFF" filter="url(#shadow-1)"/>
+        <rect x="10" y="10" width="120" height="180" rx="4" fill="#E0E0E0"/>
+        <text x="145" y="40" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#263238">Laptop</text>
+        <text x="145" y="70" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Electronics</text>
+        <text x="145" y="100" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Used - Good condition</text>
+        <rect x="145" y="130" width="100" height="30" rx="15" fill="#00796B"/>
+        <text x="195" y="150" font-family="Inter, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">View</text>
+      </g>
+      
+      <!-- Item 2 -->
+      <g transform="translate(0, 220)">
+        <rect width="335" height="200" rx="8" fill="#FFFFFF" filter="url(#shadow-1)"/>
+        <rect x="10" y="10" width="120" height="180" rx="4" fill="#E0E0E0"/>
+        <text x="145" y="40" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#263238">Office Chair</text>
+        <text x="145" y="70" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Furniture</text>
+        <text x="145" y="100" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Used - Like new</text>
+        <rect x="145" y="130" width="100" height="30" rx="15" fill="#00796B"/>
+        <text x="195" y="150" font-family="Inter, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">View</text>
+      </g>
+      
+      <!-- Item 3 -->
+      <g transform="translate(0, 440)">
+        <rect width="335" height="200" rx="8" fill="#FFFFFF" filter="url(#shadow-1)"/>
+        <rect x="10" y="10" width="120" height="180" rx="4" fill="#E0E0E0"/>
+        <text x="145" y="40" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#263238">Books Collection</text>
+        <text x="145" y="70" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Books</text>
+        <text x="145" y="100" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Used - Good condition</text>
+        <rect x="145" y="130" width="100" height="30" rx="15" fill="#00796B"/>
+        <text x="195" y="150" font-family="Inter, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">View</text>
+      </g>
+      
+      <!-- Item 4 -->
+      <g transform="translate(0, 660)">
+        <rect width="335" height="200" rx="8" fill="#FFFFFF" filter="url(#shadow-1)"/>
+        <rect x="10" y="10" width="120" height="180" rx="4" fill="#E0E0E0"/>
+        <text x="145" y="40" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#263238">Desk Lamp</text>
+        <text x="145" y="70" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Electronics</text>
+        <text x="145" y="100" font-family="Inter, sans-serif" font-size="14" fill="#546E7A">Used - Fair condition</text>
+        <rect x="145" y="130" width="100" height="30" rx="15" fill="#00796B"/>
+        <text x="195" y="150" font-family="Inter, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">View</text>
+      </g>
+    </g>
+    
+    <!-- Pagination -->
+    <g transform="translate(67.5, 1180)">
+      <rect width="240" height="50" rx="25" fill="#FFFFFF" filter="url(#shadow-1)"/>
+      <text x="60" y="32" font-family="Inter, sans-serif" font-size="16" fill="#546E7A" text-anchor="middle">1</text>
+      <text x="120" y="32" font-family="Inter, sans-serif" font-size="16" fill="#00796B" text-anchor="middle">2</text>
+      <text x="180" y="32" font-family="Inter, sans-serif" font-size="16" fill="#546E7A" text-anchor="middle">3</text>
+    </g>
+  </g>
+  
+  <!-- Footer -->
+  <g id="footer" transform="translate(0, 3400)">
+    <rect width="375" height="100" fill="#00796B"/>
+    <text x="187.5" y="50" font-family="Inter, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">© 2023 ReCircle. All rights reserved.</text>
+  </g>
+  
+  <!-- Floating Action Button -->
+  <g id="fab" transform="translate(295, 3300)">
+    <circle cx="40" cy="40" r="40" fill="#FFB74D" filter="url(#shadow-2)"/>
+    <text x="40" y="48" font-family="Inter, sans-serif" font-size="36" fill="#FFFFFF" text-anchor="middle">+</text>
+  </g>
+</svg>
