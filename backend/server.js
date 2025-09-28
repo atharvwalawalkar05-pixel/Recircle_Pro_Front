@@ -23,7 +23,35 @@ async function startServer() {
     const PORT = process.env.PORT || 5000;
 
     app.use(express.json());
-    app.use(cors());
+    // Configure CORS with a whitelist taken from ALLOWED_ORIGINS env (comma-separated).
+    // This prevents the backend from responding to arbitrary origins and allows easy updates in Render.
+    const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean);
+
+    // sensible defaults if ALLOWED_ORIGINS is not provided (adjust as needed)
+    if (allowedOrigins.length === 0) {
+      allowedOrigins.push(
+        'http://localhost:3000',
+        'http://localhost:5173',
+        'https://recircle-pro-front-git-main-atharve-s-projects.vercel.app',
+        'https://recircle-pro-front.onrender.com'
+      );
+    }
+
+    app.use(cors({
+      origin: function (origin, callback) {
+        // allow requests with no origin (like curl, mobile apps, or server-to-server)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+          return callback(null, true);
+        }
+        const msg = 'CORS policy: The origin ' + origin + ' is not allowed.';
+        return callback(new Error(msg), false);
+      },
+      credentials: true,
+    }));
 
     app.use('/api/auth', authRoutes);
     app.use('/api/items', itemRoutes);
