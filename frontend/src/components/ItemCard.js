@@ -58,8 +58,17 @@ const ItemCard = ({ item }) => {
           <CardMedia
             component="img"
             height="180"
-            image={item.image}
+            image={item.image || '/images/placeholder.svg'}
             alt={item.title}
+            onError={(e) => {
+              // Fallback to local placeholder when image fails to load (404 or network error)
+              try {
+                e.target.onerror = null;
+                e.target.src = '/images/placeholder.svg';
+              } catch (err) {
+                /* ignore */
+              }
+            }}
             sx={{
               objectFit: 'cover',
               transition: 'transform 0.3s ease-in-out',
