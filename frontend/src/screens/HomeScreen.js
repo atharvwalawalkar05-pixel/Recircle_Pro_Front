@@ -30,7 +30,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 const HomeScreen = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  // isMobile removed because it was unused and caused CI eslint failure
   const [items, setItems] = useState([]); // Ensure initial state is an empty array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');

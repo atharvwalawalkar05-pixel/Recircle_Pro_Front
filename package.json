@@ -1,0 +1,14 @@
+{
+  "name": "recircle-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd backend && npm install --no-audit --no-fund",
+    "start": "cd backend && npm start",
+    "start:dev": "cd backend && npm run dev",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
