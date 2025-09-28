@@ -22,7 +22,16 @@ Do not put these in your repo. Use the dashboard for the host.
 2. Set the 'Root' or 'Publish directory' to `/backend`.
 3. Build Command: leave blank or use `npm install` (Render will run install automatically).
 4. Start Command: `node server.js` (or `npm start` if package.json has start script).
-5. Set environment variables in the Render dashboard (MONGO_URI, JWT_SECRET, CLOUDINARY_*, FIREBASE_* as needed).
+5. Set environment variables in the Render dashboard (Dashboard → Your Service → Environment):
+
+   - Key: MONGO_URI  Value: mongodb+srv://<user>:<password>@cluster0.xxxxx.mongodb.net/your_db?retryWrites=true&w=majority  Scope: RUN AND BUILD
+   - Key: JWT_SECRET  Value: <a strong random string>  Scope: RUN AND BUILD
+   - Key: CLOUDINARY_CLOUD_NAME  Value: your_cloud_name  Scope: RUN AND BUILD
+   - Key: CLOUDINARY_API_KEY  Value: your_key  Scope: RUN AND BUILD
+   - Key: CLOUDINARY_API_SECRET  Value: your_secret  Scope: RUN AND BUILD
+   - (Optional) Any FIREBASE_* keys your app requires
+
+   Note: Do NOT commit these values to your repo. If you previously committed a `backend/.env`, remove it and rotate any leaked credentials.
 6. Choose a plan and deploy. Verify logs for successful DB connection.
 
 Recommended Render settings:
@@ -64,5 +73,11 @@ npm start
 - Rotate any keys that were leaked.
 - Add monitoring/alerts for the backend (Render provides logs and integrations).
 - Configure least-privileged DB user and restrict network access.
+
+Quick troubleshooting checklist if Render deployment fails with DB connection errors:
+- Confirm `MONGO_URI` is set in the Render dashboard and does not contain `localhost` or `127.0.0.1`.
+- Confirm the MongoDB user has network access allowed (if using Atlas, allow Render's outbound IPs or use SRV connection string and proper firewall rules).
+- Check Render logs (Logs → Live) for the `FATAL ERROR` messages added to `config/db.js` which will tell you if the URI looked local.
+- Ensure `JWT_SECRET` is set; the server will still start if missing but auth will fail.
 
 If you want, I can create a `server /health` route for a simple health check, add CI checks to block accidental commits of `.env`, or prepare a sample Render service creation script.

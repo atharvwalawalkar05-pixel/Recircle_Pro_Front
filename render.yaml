@@ -1,0 +1,33 @@
+# Render service manifest template
+# Copy this to your repo and customize values before using `render deploy` or connecting in Render dashboard.
+
+services:
+  - type: web
+    name: recircle-backend
+    env: node
+    branch: main
+    plan: free
+    region: oregon
+    repo: https://github.com/atharvwalawalkar05-pixel/Recircle_Pro_Front
+    root: backend
+    buildCommand: "npm install --no-audit --no-fund && echo 'No build step for backend'"
+    startCommand: "npm start"
+    envVars:
+      - key: MONGO_URI
+        # Do NOT store production credentials in the repo. Set this in Render dashboard (Settings -> Environment).
+        value: ""
+        scope: RUN_AND_BUILD
+      - key: JWT_SECRET
+        value: "__JWT_SECRET_REPLACE_ME__"
+        scope: RUN_AND_BUILD
+      - key: CLOUDINARY_CLOUD_NAME
+        value: "__CLOUDINARY_CLOUD_NAME__"
+        scope: RUN_AND_BUILD
+      - key: CLOUDINARY_API_KEY
+        value: "__CLOUDINARY_API_KEY__"
+        scope: RUN_AND_BUILD
+      - key: CLOUDINARY_API_SECRET
+        value: "__CLOUDINARY_API_SECRET__"
+        scope: RUN_AND_BUILD
+    healthCheckPath: /health
+    autoDeploy: true

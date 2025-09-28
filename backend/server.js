@@ -1,4 +1,11 @@
-require('dotenv').config();
+// Only load local .env when not running in production on the host (e.g. Render)
+// This prevents a committed `.env` with a localhost MONGO_URI from being used in cloud deploys.
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+} else {
+  // In production, environment variables should be set in the hosting platform.
+  console.log('Production mode: skipping loading .env from repository. Ensure required environment variables (MONGO_URI, JWT_SECRET, etc.) are set in Render/Vercel.');
+}
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
