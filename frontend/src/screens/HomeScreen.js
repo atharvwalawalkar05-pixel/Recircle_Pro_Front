@@ -16,7 +16,6 @@ import {
   Container,
   Paper,
   useTheme,
-  useMediaQuery,
   Stack,
   Fab,
   Zoom,
