@@ -28,20 +28,12 @@
 
 ### ⚠️ **MongoDB Setup Required:**
 
-To fix the authentication error, you need to:
+To fix the authentication error, set up a new MongoDB Atlas user with a strong password and least privilege. Do NOT store credentials in the repository. Steps summary:
 
-1. **Go to MongoDB Atlas Dashboard** (https://cloud.mongodb.com/)
-2. **Create a new database user:**
-   - Username: `cscomputersci5152`
-   - Password: `recircle123`
-   - Role: `Atlas admin` or `Read and write to any database`
-
-3. **Whitelist your IP address:**
-   - Go to Network Access
-   - Add your current IP address or use `0.0.0.0/0` for development
-
-4. **Verify cluster URL:**
-   - Make sure `cluster0.0nyhv66.mongodb.net` is your correct cluster URL
+1. Go to MongoDB Atlas Dashboard (https://cloud.mongodb.com/)
+2. Create a new database user with a strong randomly generated password. Use the least-privileged role required by your application.
+3. Configure Network Access to allow appropriate IPs (avoid 0.0.0.0/0 for production).
+4. Update `MONGO_URI` in your deployment provider's environment variables (do NOT commit secrets).
 
 ## 🚀 **Alternative Development Setup:**
 
