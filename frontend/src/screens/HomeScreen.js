@@ -52,9 +52,13 @@ const HomeScreen = () => {
           height: { xs: '600px', md: '700px' },
           width: '100%',
           overflow: 'hidden',
-          backgroundImage: 'url(/images/hero-bg.svg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          // Layered backgrounds: base hero gradient + your right-side image
+          backgroundImage: 'url("/images/hero-bg.svg"), url("/images/overlap image.jpg")',
+          backgroundRepeat: 'no-repeat, no-repeat',
+          // 1) Base (svg) covers; 2) Foreground image takes ~60% width on the right
+          backgroundSize: 'cover, 60%',
+          backgroundPosition: 'left center, right center',
+          backgroundBlendMode: 'normal, normal',
           mb: 8,
         }}
       >
@@ -66,8 +70,8 @@ const HomeScreen = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-            backdropFilter: 'blur(10px)',
+            // Disable overlay so the background images are fully visible
+            display: 'none',
             zIndex: 1,
           }}
         />
