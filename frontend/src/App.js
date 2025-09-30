@@ -15,6 +15,8 @@ import ItemScreen from './screens/ItemScreen';
 import CreateItemScreen from './screens/CreateItemScreen';
 import EditItemScreen from './screens/EditItemScreen';
 import NGOsScreen from './screens/NGOsScreen';
+import AboutScreen from './screens/AboutScreen';
+import ProfileScreen from './screens/ProfileScreen';
 import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
@@ -32,6 +34,8 @@ function App() {
               <Route path="/register" element={<RegisterScreen />} />
               <Route path="/item/:id" element={<ItemScreen />} />
               <Route path="/ngos" element={<NGOsScreen />} />
+              <Route path="/about" element={<AboutScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
               <Route element={<ProtectedRoute />}>
                 <Route path="/create" element={<CreateItemScreen />} />
                 <Route path="/item/:id/edit" element={<EditItemScreen />} />

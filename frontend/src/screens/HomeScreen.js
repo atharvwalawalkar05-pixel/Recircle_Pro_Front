@@ -200,7 +200,8 @@ const HomeScreen = () => {
     const fetchItems = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/items`, {
+        const apiBase = process.env.REACT_APP_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:5000' : '');
+        const { data } = await axios.get(`${apiBase}/api/items`, {
           params: {
             keyword: keyword, // This is the "committed" search keyword
             category: category,
