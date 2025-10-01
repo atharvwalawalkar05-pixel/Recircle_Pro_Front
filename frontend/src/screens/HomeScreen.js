@@ -415,25 +415,28 @@ const HomeScreen = () => {
             </Typography>
             <Grid container spacing={2} justifyContent="center">
               <Grid item xs={12} md={4}>
+                {/* Working placeholder; replace with your actual image, e.g., "/images/concept1.png" */}
                 <Box
                   component="img"
-                  src="https://picsum.photos/400/300?random=2" // Working placeholder; replace with your actual image, e.g., "/images/concept1.png"
+                  src="https://picsum.photos/400/300?random=2"
                   alt="Concept 1"
                   sx={{ width: '100%', height: 'auto', borderRadius: 0 }}
                 />
               </Grid>
               <Grid item xs={12} md={4}>
+                {/* Working placeholder; replace with your actual image, e.g., "/images/concept2.png" */}
                 <Box
                   component="img"
-                  src="https://picsum.photos/400/300?random=3" // Working placeholder; replace with your actual image, e.g., "/images/concept2.png"
+                  src="https://picsum.photos/400/300?random=3"
                   alt="Concept 2"
                   sx={{ width: '100%', height: 'auto', borderRadius: 0 }}
                 />
               </Grid>
               <Grid item xs={12} md={4}>
+                {/* Working placeholder; replace with your actual image, e.g., "/images/concept3.png" */}
                 <Box
                   component="img"
-                  src="https://picsum.photos/400/300?random=4" // Working placeholder; replace with your actual image, e.g., "/images/concept3.png"
+                  src="https://picsum.photos/400/300?random=4"
                   alt="Concept 3"
                   sx={{ width: '100%', height: 'auto', borderRadius: 0 }}
                 />
@@ -591,25 +594,28 @@ const HomeScreen = () => {
             {/* Additional Images */}
             <Grid container spacing={2} sx={{ mt: 6 }}>
               <Grid item xs={12} md={4}>
+                {/* Working placeholder; replace with your actual image, e.g., "/images/recycling1.png" */}
                 <Box
                   component="img"
-                  src="https://picsum.photos/400/300?random=5" // Working placeholder; replace with your actual image, e.g., "/images/recycling1.png"
+                  src="https://picsum.photos/400/300?random=5"
                   alt="Image 1"
                   sx={{ width: '100%', height: 'auto' }}
                 />
               </Grid>
               <Grid item xs={12} md={4}>
+                {/* Working placeholder; replace with your actual image, e.g., "/images/recycling2.png" */}
                 <Box
                   component="img"
-                  src="https://picsum.photos/400/300?random=6" // Working placeholder; replace with your actual image, e.g., "/images/recycling2.png"
+                  src="https://picsum.photos/400/300?random=6"
                   alt="Image 2"
                   sx={{ width: '100%', height: 'auto' }}
                 />
               </Grid>
               <Grid item xs={12} md={4}>
+                {/* Working placeholder; replace with your actual image, e.g., "/images/recycling3.png" */}
                 <Box
                   component="img"
-                  src="https://picsum.photos/400/300?random=7" // Working placeholder; replace with your actual image, e.g., "/images/recycling3.png"
+                  src="https://picsum.photos/400/300?random=7"
                   alt="Image 3"
                   sx={{ width: '100%', height: 'auto' }}
                 />
