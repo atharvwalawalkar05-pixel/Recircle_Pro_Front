@@ -29,11 +29,10 @@ import AddIcon from '@mui/icons-material/Add';
 
 const HomeScreen = () => {
   const theme = useTheme();
-  // isMobile removed because it was unused and caused CI eslint failure
-  const [items, setItems] = useState([]); // Ensure initial state is an empty array
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  
+
   // State for search, filter, and pagination
   const [searchTerm, setSearchTerm] = useState('');
   const [keyword, setKeyword] = useState('');
@@ -52,10 +51,8 @@ const HomeScreen = () => {
           height: { xs: '600px', md: '700px' },
           width: '100%',
           overflow: 'hidden',
-          // Layered backgrounds: base hero gradient + your right-side image
           backgroundImage: 'url("/images/hero-bg.svg"), url("/images/overlap image.jpg")',
           backgroundRepeat: 'no-repeat, no-repeat',
-          // 1) Base (svg) covers; 2) Foreground image takes ~60% width on the right
           backgroundSize: 'cover, 60%',
           backgroundPosition: 'left center, right center',
           backgroundBlendMode: 'normal, normal',
@@ -70,7 +67,6 @@ const HomeScreen = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            // Disable overlay so the background images are fully visible
             display: 'none',
             zIndex: 1,
           }}
@@ -203,12 +199,11 @@ const HomeScreen = () => {
         const apiBase = process.env.REACT_APP_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:5000' : '');
         const { data } = await axios.get(`${apiBase}/api/items`, {
           params: {
-            keyword: keyword, // This is the "committed" search keyword
+            keyword: keyword,
             category: category,
             page: page,
           }
         });
-        // Correctly set items from the response object
         setItems(data.items || []);
         setPages(data.pages || 1);
         setLoading(false);
@@ -218,7 +213,7 @@ const HomeScreen = () => {
       }
     };
     fetchItems();
-  }, [keyword, category, page]); // Re-fetch whenever keyword, category, or page changes
+  }, [keyword, category, page]);
 
   const searchHandler = (e) => {
     e.preventDefault();
@@ -227,7 +222,7 @@ const HomeScreen = () => {
   };
   
   const handleCategoryChange = (e) => {
-    setPage(1); // Reset to first page on a new filter
+    setPage(1);
     setCategory(e.target.value);
   }
 
@@ -235,7 +230,6 @@ const HomeScreen = () => {
     setPage(value);
   };
 
-  // Feature cards section
   const renderFeatureCards = () => {
     const features = [
       {
@@ -415,7 +409,6 @@ const HomeScreen = () => {
             </Typography>
             <Grid container spacing={2} justifyContent="center">
               <Grid item xs={12} md={4}>
-                {/* Working placeholder; replace with your actual image, e.g., "/images/concept1.png" */}
                 <Box
                   component="img"
                   src="https://picsum.photos/400/300?random=2"
@@ -424,7 +417,6 @@ const HomeScreen = () => {
                 />
               </Grid>
               <Grid item xs={12} md={4}>
-                {/* Working placeholder; replace with your actual image, e.g., "/images/concept2.png" */}
                 <Box
                   component="img"
                   src="https://picsum.photos/400/300?random=3"
@@ -433,7 +425,6 @@ const HomeScreen = () => {
                 />
               </Grid>
               <Grid item xs={12} md={4}>
-                {/* Working placeholder; replace with your actual image, e.g., "/images/concept3.png" */}
                 <Box
                   component="img"
                   src="https://picsum.photos/400/300?random=4"
@@ -594,7 +585,6 @@ const HomeScreen = () => {
             {/* Additional Images */}
             <Grid container spacing={2} sx={{ mt: 6 }}>
               <Grid item xs={12} md={4}>
-                {/* Working placeholder; replace with your actual image, e.g., "/images/recycling1.png" */}
                 <Box
                   component="img"
                   src="https://picsum.photos/400/300?random=5"
@@ -603,7 +593,6 @@ const HomeScreen = () => {
                 />
               </Grid>
               <Grid item xs={12} md={4}>
-                {/* Working placeholder; replace with your actual image, e.g., "/images/recycling2.png" */}
                 <Box
                   component="img"
                   src="https://picsum.photos/400/300?random=6"
@@ -612,7 +601,6 @@ const HomeScreen = () => {
                 />
               </Grid>
               <Grid item xs={12} md={4}>
-                {/* Working placeholder; replace with your actual image, e.g., "/images/recycling3.png" */}
                 <Box
                   component="img"
                   src="https://picsum.photos/400/300?random=7"
@@ -626,7 +614,7 @@ const HomeScreen = () => {
       </Container> 
       {/* MAIN ITEMS AND CONTENT CONTAINER END */}
 
-      {/* Footer Note (Moved out to be a sibling of the main content container) */}
+      {/* Footer Note */}
       <Box sx={{ textAlign: 'center', py: 2, backgroundColor: '#FFFFFF' }}>
         <Typography variant="body2" color="text.secondary">
           © 2023 ReCircle
