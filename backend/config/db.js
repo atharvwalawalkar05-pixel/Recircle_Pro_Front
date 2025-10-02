@@ -32,6 +32,14 @@ const connectDB = async () => {
     }
 
     console.log("Attempting to connect to MongoDB...");
+    console.log("MONGO_URI format check:", MONGO_URI.substring(0, 20) + "...");
+    
+    // Validate MONGO_URI format
+    if (!MONGO_URI.startsWith('mongodb://') && !MONGO_URI.startsWith('mongodb+srv://')) {
+      console.error('FATAL ERROR: MONGO_URI must start with "mongodb://" or "mongodb+srv://"');
+      console.error('Current MONGO_URI starts with:', MONGO_URI.substring(0, 15));
+      process.exit(1);
+    }
     
     // MongoDB connection options (removed deprecated options)
     const mongoOptions = {
