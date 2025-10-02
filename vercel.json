@@ -9,7 +9,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build",
+        "distDir": "frontend/build",
         "buildCommand": "npm run build"
       }
     }
@@ -28,10 +28,11 @@
     },
     {
       "src": "/(.*)",
-      "dest": "build/index.html"
+      "dest": "frontend/build/index.html"
     }
   ],
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "REACT_APP_API_URL": "https://recircle-pro-front-main.vercel.app"
   }
 }

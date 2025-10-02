@@ -40,7 +40,7 @@ const ItemScreen = () => {
     }
   };
 
-  const images = item && item.images && item.images.length > 0 ? item.images : [item.image]; // fallback for old items
+  const images = item && item.images && item.images.length > 0 ? item.images : (item.image ? [item.image] : []); // fallback for old items
 
   const sliderSettings = {
     dots: true,
