@@ -1,43 +1,21 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "rewrites": [
     {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
+      "source": "/api/(.*)",
+      "destination": "https://recircle-backend.onrender.com/api/$1"
     },
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "frontend/build",
-        "buildCommand": "npm run build"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/health",
-      "dest": "backend/server.js"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/build/index.html"
+      "source": "/health",
+      "destination": "https://recircle-backend.onrender.com/health"
     }
   ],
   "env": {
     "NODE_ENV": "production",
-    "REACT_APP_API_URL": "https://recircle-pro-front-main.vercel.app"
-  },
-  "functions": {
-    "backend/server.js": {
-      "maxDuration": 30
-    }
+    "REACT_APP_API_URL": "https://recircle-backend.onrender.com",
+    "REACT_APP_CLOUDINARY_CLOUD_NAME": "your-cloudinary-cloud-name"
   }
 }
