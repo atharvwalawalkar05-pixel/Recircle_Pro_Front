@@ -58,17 +58,49 @@ const CreateItemScreen = () => {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('upload_preset', 'recircle_preset');
-        const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`;
-        const res = await axios.post(cloudinaryUrl, formData);
-        return res.data.secure_url;
+        
+        // Make sure we have the cloud name
+        const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
+        if (!cloudName) {
+          console.error('Missing Cloudinary cloud name in environment variables');
+          throw new Error('Configuration error: Missing Cloudinary settings');
+        }
+        
+        const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
+        console.log('Uploading to Cloudinary URL:', cloudinaryUrl);
+        
+        try {
+          const res = await axios.post(cloudinaryUrl, formData);
+          console.log('Cloudinary upload success:', res.data.secure_url);
+          return res.data.secure_url;
+        } catch (uploadError) {
+          console.error('Cloudinary upload error:', uploadError.response?.data || uploadError.message);
+          throw new Error(`Image upload failed: ${uploadError.message}`);
+        }
       });
-      const imageUrls = await Promise.all(uploadPromises);
-
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const itemData = { title, description, category, condition, itemType, images: imageUrls };
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/items`, itemData, config);
-      setLoading(false);
-      navigate('/');
+      
+      try {
+        const imageUrls = await Promise.all(uploadPromises);
+        console.log('All images uploaded successfully:', imageUrls);
+        
+        const apiUrl = process.env.REACT_APP_API_URL;
+        if (!apiUrl) {
+          console.error('Missing API URL in environment variables');
+          throw new Error('Configuration error: Missing API URL');
+        }
+        
+        const config = { headers: { Authorization: `Bearer ${user.token}` } };
+        const itemData = { title, description, category, condition, itemType, images: imageUrls };
+        
+        console.log('Sending data to backend:', `${apiUrl}/api/items`);
+        await axios.post(`${apiUrl}/api/items`, itemData, config);
+        setLoading(false);
+        navigate('/');
+      } catch (err) {
+        console.error('Error in item creation process:', err);
+        setError(`Failed to create item: ${err.message}`);
+        setLoading(false);
+      }
     } catch (err) {
       setError('Failed to create item. Please try again.');
       setLoading(false);
