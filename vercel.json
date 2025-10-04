@@ -16,6 +16,6 @@
   "env": {
     "NODE_ENV": "production",
     "REACT_APP_API_URL": "https://recircle-backend.onrender.com",
-    "REACT_APP_CLOUDINARY_CLOUD_NAME": "your-cloudinary-cloud-name"
+    "REACT_APP_CLOUDINARY_CLOUD_NAME": "dddse3dp2"
   }
 }
