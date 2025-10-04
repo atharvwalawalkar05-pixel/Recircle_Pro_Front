@@ -11,7 +11,7 @@
     {
       "source": "/health",
       "destination": "https://recircle-backend.onrender.com/health"
-    }"buildCommand": "npm install && cd frontend && npm install && npm run build""buildCommand": "npm install && cd frontend && npm install && npm run build""buildCommand": "npm install && cd frontend && npm install && npm run build""buildCommand": "npm install && cd frontend && npm install && npm run build""buildCommand": "npm install && cd frontend && npm install && npm run build"
+    }
   ],
   "env": {
     "NODE_ENV": "production",
