@@ -27,7 +27,7 @@ const RegisterScreen = () => {
     setLoading(true);
     setError('');
     try {
-      const apiUrl = `${process.env.REACT_APP_API_URL}/api/auth/register`;
+      const apiUrl = `${process.env.REACT_APP_API_URL}/api/users`;
       await axios.post(apiUrl, { name, email, password });
       setLoading(false);
       alert('Registration successful! Please log in.');
